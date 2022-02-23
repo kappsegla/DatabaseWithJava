@@ -15,8 +15,10 @@ public class App {
             PreparedStatement statement = connection.prepareStatement(sqlQuery);
             ResultSet resultSet = statement.executeQuery();
 
-
-
+            while( resultSet.next() )
+            {
+                System.out.println(resultSet.getString(1) + " " + resultSet.getString("owner"));
+            }
             resultSet.close();
             statement.close();
         }catch(SQLException sqlException){
