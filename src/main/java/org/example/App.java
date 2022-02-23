@@ -44,6 +44,7 @@ public class App {
             updateStatement.close();
             System.out.println(count + " rows was updated.");
 
+
             PreparedStatement deleteStatement = connection.prepareStatement(sqlDelete);
             deleteStatement.setString(1,"Sessan");
             count = deleteStatement.executeUpdate();
