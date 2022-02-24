@@ -43,7 +43,7 @@ public class SongService {
     public void removeSong(Song song) {
         EntityManager entityManager = factory.createEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.remove(song);
+        entityManager.remove( entityManager.contains(song)? song : entityManager.merge(song) );
         entityManager.getTransaction().commit();
         entityManager.close();
     }

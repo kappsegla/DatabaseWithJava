@@ -20,7 +20,7 @@ public class App {
         songById.setName("Ring Ring");
         songService.updateSong(songById);
 
-        //songService.removeSong(songById);
+        songService.removeSong(songById);
 
         SongService.factory.close();
     }
