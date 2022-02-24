@@ -1,6 +1,8 @@
 package org.example.entity;
 
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -9,8 +11,18 @@ import jakarta.persistence.Table;
 public class Song {
 
     @Id
+    @GeneratedValue
     private Long id;
     private String name;
+    private String artist;
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
 
     public Long getId() {
         return id;
