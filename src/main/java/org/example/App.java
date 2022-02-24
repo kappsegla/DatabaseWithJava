@@ -1,7 +1,16 @@
 package org.example;
 
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello There!");
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
+
+
+
+
+
     }
 }
