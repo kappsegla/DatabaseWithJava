@@ -12,7 +12,6 @@ public class App {
 
     public static void main(String[] args) {
 
-
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/newton?user=user&password=password")) {
             //Select all rows
             PreparedStatement statement = connection.prepareStatement(sqlQuery);
