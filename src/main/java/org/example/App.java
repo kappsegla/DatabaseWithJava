@@ -8,23 +8,23 @@ import org.example.entity.Song;
 public class App {
     public static void main(String[] args) {
 
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
-
-        EntityManager entityManager = factory.createEntityManager();
+        SongService songService = new SongService();
 
         Song song = new Song();
-        song.setName("Mamma Mia");
+        song.setName("Ring ring");
         song.setArtist("Abba");
 
-        entityManager.getTransaction().begin();
+        var songs = songService.queryForSongs();
+        songs.forEach(System.out::println);
 
-        entityManager.persist(song);
+        var songById = songService.getSongById(2L);
+        System.out.println(songById);
 
-        entityManager.getTransaction().commit();
+        songById.setName("Ring Ring");
+        songService.updateSong(songById);
 
-        entityManager.close();
+        //songService.removeSong(songById);
 
-
-        factory.close();
+        SongService.factory.close();
     }
 }
