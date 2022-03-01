@@ -66,7 +66,7 @@ class MyListCell extends ListCell<Country> {
 class FlagFactory {
     //Only use this when the same image is used many times. Never when an image is mapped one to one in a scrolling flow.
     //Images will be stored for all future here, can be optimized with limiting number of images stored.
-
+    //Replace with https://github.com/K1rakishou/Caching-Image-Loader ???
     private final static Map<String, Image> flags = new HashMap<>();
 
     static Image getFlag(String countryCode) {
