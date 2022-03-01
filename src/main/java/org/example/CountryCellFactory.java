@@ -19,23 +19,20 @@ public class CountryCellFactory implements Callback<ListView<Country>, ListCell<
 
 class MyListCell extends ListCell<Country> {
 
-    private Image image;
-    private ImageView imageView;
-    private HBox hBox;
-    private VBox box;
-    private Label countryName;
-    private Label countryCapital;
-    private Node cellNode;
+    private final ImageView imageView;
+    private final Label countryName;
+    private final Label countryCapital;
+    private final Node cellNode;
 
     static int counter = 0;
 
     public MyListCell() {
         super();
         imageView = new ImageView();
-        hBox = new HBox();
+        HBox hBox = new HBox();
         hBox.setSpacing(10.0);
         hBox.getChildren().add(imageView);
-        box = new VBox();
+        VBox box = new VBox();
         hBox.getChildren().add(box);
         countryName = new Label("");
         countryCapital = new Label("");
@@ -54,7 +51,7 @@ class MyListCell extends ListCell<Country> {
             setGraphic(null);
         } else {
             setText(null);
-            image = new Image("/" + country.getCode() + ".png");
+            Image image = new Image("/" + country.getCode() + ".png");
             imageView.setImage(image);
             countryName.setText(country.getName());
             countryCapital.setText(country.getCapital());
