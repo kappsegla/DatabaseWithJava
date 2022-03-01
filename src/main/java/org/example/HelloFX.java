@@ -39,6 +39,16 @@ public class HelloFX extends Application {
 
         List<Country> stringList = new ArrayList<>(List.of(
                 new Country("Sverige","Stockholm",10500000, "swe"),
+                new Country("Norge","Oslo",5500000, "nor"),
+                new Country("Norge","Oslo",5500000, "nor"),
+                new Country("Sverige","Stockholm",10500000, "swe"),
+                new Country("Norge","Oslo",5500000, "nor"),
+                new Country("Sverige","Stockholm",10500000, "swe"),
+                new Country("Sverige","Stockholm",10500000, "swe"),
+                new Country("Norge","Oslo",5500000, "nor"),
+                new Country("Sverige","Stockholm",10500000, "swe"),
+                new Country("Norge","Oslo",5500000, "nor"),
+                new Country("Sverige","Stockholm",10500000, "swe"),
                 new Country("Norge","Oslo",5500000, "nor")));
 
         listView = new ListView<>();
