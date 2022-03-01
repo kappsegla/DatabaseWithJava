@@ -42,8 +42,12 @@ public class HelloFX extends Application {
                 new Country("Norge","Oslo",5500000)));
 
         listView = new ListView<>();
+        listView.setCellFactory(new CountryCellFactory());
+
         observableList = FXCollections.observableList(stringList);
         listView.setItems(observableList);
+
+
 
         HBox hBox = new HBox();
 

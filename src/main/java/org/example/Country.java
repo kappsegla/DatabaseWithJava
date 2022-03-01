@@ -31,11 +31,6 @@ public class Country {
         return population;
     }
 
-    @Override
-    public String toString() {
-        return name+","+capital+"("+population+")";
-    }
-
     public void setPopulation(int population) {
         this.population = population;
     }
