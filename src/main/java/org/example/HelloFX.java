@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -38,8 +37,9 @@ public class HelloFX extends Application {
                 observableList.remove(index);
         });
 
-        List<Country> stringList = new ArrayList<>(List.of(new Country("Sverige","Stockholm",10500000),
-                new Country("Norge","Oslo",5500000)));
+        List<Country> stringList = new ArrayList<>(List.of(
+                new Country("Sverige","Stockholm",10500000, "swe"),
+                new Country("Norge","Oslo",5500000, "nor")));
 
         listView = new ListView<>();
         listView.setCellFactory(new CountryCellFactory());

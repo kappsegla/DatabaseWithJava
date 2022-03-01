@@ -4,11 +4,13 @@ public class Country {
     private String name;
     private String capital;
     private int population;
+    private String code;
 
-    public Country(String name, String capital, int population) {
+    public Country(String name, String capital, int population, String code) {
         this.name = name;
         this.capital = capital;
         this.population = population;
+        this.code = code;
     }
 
     public String getName() {
@@ -33,5 +35,13 @@ public class Country {
 
     public void setPopulation(int population) {
         this.population = population;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }
