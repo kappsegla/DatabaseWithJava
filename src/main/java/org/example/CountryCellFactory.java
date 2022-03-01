@@ -10,6 +10,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CountryCellFactory implements Callback<ListView<Country>, ListCell<Country>> {
     @Override
     public ListCell<Country> call(ListView<Country> countryListView) {
@@ -19,12 +22,11 @@ public class CountryCellFactory implements Callback<ListView<Country>, ListCell<
 
 class MyListCell extends ListCell<Country> {
 
+    static int counter = 0;
     private final ImageView imageView;
     private final Label countryName;
     private final Label countryCapital;
     private final Node cellNode;
-
-    static int counter = 0;
 
     public MyListCell() {
         super();
@@ -40,7 +42,7 @@ class MyListCell extends ListCell<Country> {
         box.getChildren().add(countryCapital);
         cellNode = hBox;
         counter++;
-       // System.out.println("Constructor for ListCell. Total count: " + counter);
+        // System.out.println("Constructor for ListCell. Total count: " + counter);
     }
 
     @Override
@@ -51,12 +53,30 @@ class MyListCell extends ListCell<Country> {
             setGraphic(null);
         } else {
             setText(null);
-            Image image = new Image("/" + country.getCode() + ".png");
+            Image image = FlagFactory.getFlag(country.getCode());
             imageView.setImage(image);
             countryName.setText(country.getName());
             countryCapital.setText(country.getCapital());
             setGraphic(cellNode);
-         //   System.out.println("updateItem : " +  getIndex());
+            //System.out.println("updateItem : " +  getIndex());
         }
+    }
+}
+
+class FlagFactory {
+    //Only use this when the same image is used many times. Never when an image is mapped one to one in a scrolling flow.
+    //Images will be stored for all future here, can be optimized with limiting number of images stored.
+
+    private final static Map<String, Image> flags = new HashMap<>();
+
+    static Image getFlag(String countryCode) {
+        return flags.computeIfAbsent(countryCode, code -> new Image("/" + code + ".png"));
+
+//        if( flags.containsKey(countryCode))
+//            return flags.get(countryCode);
+//        else {
+//            flags.put(countryCode, new Image("/" + countryCode + ".png"));
+//            return flags.get(countryCode);
+//        }
     }
 }
