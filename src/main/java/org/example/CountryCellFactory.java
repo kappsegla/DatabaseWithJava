@@ -71,6 +71,7 @@ class FlagFactory {
 
     static Image getFlag(String countryCode) {
         return flags.computeIfAbsent(countryCode, code -> new Image("/" + code + ".png"));
+        //return flags.computeIfAbsent(countryCode, code -> new Image("https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Flag_of_Sweden.svg/1200px-Flag_of_Sweden.svg.png",80, 80, false, false));
 
 //        if( flags.containsKey(countryCode))
 //            return flags.get(countryCode);
