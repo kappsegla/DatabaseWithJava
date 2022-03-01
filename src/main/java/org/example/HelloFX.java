@@ -15,8 +15,8 @@ import java.util.List;
 
 public class HelloFX extends Application {
 
-    private ObservableList<String> observableList;
-    private ListView<String> listView;
+    private ObservableList<Country> observableList;
+    private ListView<Country> listView;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -28,7 +28,7 @@ public class HelloFX extends Application {
         Button button = new Button();
         button.setText("Add");
         button.setOnAction(actionEvent -> {
-            observableList.add(textField.getText());
+          //  observableList.add(textField.getText());
         });
         Button deleteButton = new Button();
         deleteButton.setText("Delete");
@@ -38,7 +38,8 @@ public class HelloFX extends Application {
                 observableList.remove(index);
         });
 
-        List<String> stringList = new ArrayList<>(List.of("Hej","Hello","Hola","Guten tag","Ahoj"));
+        List<Country> stringList = new ArrayList<>(List.of(new Country("Sverige","Stockholm",10500000),
+                new Country("Norge","Oslo",5500000)));
 
         listView = new ListView<>();
         observableList = FXCollections.observableList(stringList);
