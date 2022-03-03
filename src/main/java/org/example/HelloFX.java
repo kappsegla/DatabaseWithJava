@@ -1,18 +1,20 @@
 package org.example;
 
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.entity.Song;
 import org.example.service.SongService;
-
-import java.util.List;
 
 
 public class HelloFX extends Application {
@@ -42,7 +44,14 @@ public class HelloFX extends Application {
 
         addButton = new Button();
         addButton.setText("Add");
+        addButton.setDisable(true);
         addButton.setOnAction(actionEvent -> createNewSong());
+
+        //Connect status of text in textfields to add button disable.
+        BooleanBinding booleanBinding = Bindings.or(songName.textProperty().isEmpty(),
+                                                     artistName.textProperty().isEmpty());
+
+        addButton.disableProperty().bind(booleanBinding);
 
         deleteButton = new Button();
         deleteButton.setText("Delete");
@@ -82,6 +91,8 @@ public class HelloFX extends Application {
         Song song = new Song();
         song.setName(songName.getText());
         song.setArtist(artistName.getText());
+        songName.setText("");
+        artistName.setText("");
         //Spara i databasen
         songService.saveSong(song);
         //Uppdatera listView från Databasen
