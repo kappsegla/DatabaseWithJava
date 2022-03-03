@@ -6,10 +6,7 @@ import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -61,6 +58,12 @@ public class HelloFX extends Application {
         var songs = songService.queryForSongs();
         observableList = FXCollections.observableList(songs);
         listView.setItems(observableList);
+        Slider slider = new Slider(0, 360, 10.0);
+        slider.setShowTickMarks(true);
+        slider.setMajorTickUnit(1.0f);
+        slider.setBlockIncrement(1.0f);
+
+        deleteButton.rotateProperty().bind(slider.valueProperty());
 
         GridPane gridPane = new GridPane();
 
@@ -71,6 +74,7 @@ public class HelloFX extends Application {
         gridPane.addRow(0,labelForSongName,songName);
         gridPane.addRow(1, labelForArtistName, artistName);
         gridPane.addRow(2, addButton, deleteButton);
+        gridPane.add(slider,0,3,2,1);
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
