@@ -69,7 +69,7 @@ public class CanvasFX extends Application {
         executor.submit(() -> {
             try {
                 //Long running task, network not responding
-                Thread.sleep(10000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
