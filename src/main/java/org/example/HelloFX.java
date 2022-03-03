@@ -71,6 +71,8 @@ public class HelloFX extends Application {
         root.getChildren().add(gridPane);
         root.getChildren().add(listView);
 
+        gridPane.setVgap(10.0);
+        gridPane.setHgap(5.0);
         gridPane.addRow(0,labelForSongName,songName);
         gridPane.addRow(1, labelForArtistName, artistName);
         gridPane.addRow(2, addButton, deleteButton);
