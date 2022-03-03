@@ -1,6 +1,7 @@
 package org.example;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
@@ -11,17 +12,27 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 
 public class CanvasFX extends Application {
 
+    ExecutorService executor = Executors.newSingleThreadExecutor();
     Canvas canvas;
     private ColorPicker colorPicker;
     private ShapeType shapeType = ShapeType.CIRCLE;
 
     @Override
+    public void stop() throws Exception {
+        super.stop();
+        executor.shutdown();
+    }
+
+    @Override
     public void start(Stage primaryStage) throws Exception {
         canvas = new Canvas(400, 400);
-        canvas.setOnMouseClicked(event -> canvasClicked(event));
+        canvas.setOnMouseClicked(this::canvasClicked);
 
         BorderPane root = new BorderPane();
         root.setCenter(canvas);
@@ -55,12 +66,23 @@ public class CanvasFX extends Application {
     }
 
     private void canvasClicked(MouseEvent event) {
-        var gc = canvas.getGraphicsContext2D();
-        gc.setFill(colorPicker.getValue());
-        switch (shapeType) {
-            case CIRCLE -> gc.fillOval(event.getX() - 10, event.getY() - 10, 20, 20);
-            case RECT -> gc.fillRect(event.getX() - 10, event.getY() - 10, 20, 20);
-            case LINE -> gc.strokeLine(event.getX(), event.getY(), 20, 0);
-        }
+        executor.submit(() -> {
+            try {
+                //Long running task, network not responding
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Platform.runLater(() -> {
+                var gc = canvas.getGraphicsContext2D();
+                gc.setFill(colorPicker.getValue());
+                switch (shapeType) {
+                    case CIRCLE -> gc.fillOval(event.getX() - 10, event.getY() - 10, 20, 20);
+                    case RECT -> gc.fillRect(event.getX() - 10, event.getY() - 10, 20, 20);
+                    case LINE -> gc.strokeLine(event.getX(), event.getY(), 20, 0);
+
+                }
+            });
+        });
     }
 }
