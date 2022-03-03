@@ -7,18 +7,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.example.entity.Song;
+import org.example.service.SongService;
 
 
 public class HelloFX extends Application {
 
-    private ObservableList<Country> observableList;
-    private ListView<Country> listView;
+    private ObservableList<Song> observableList;
+    private ListView<Song> listView;
+
+    private SongService songService;
 
     @Override
     public void start(Stage stage) throws Exception {
+        songService = new SongService();
 
         Label label = new Label("_Name:");
         TextField textField = new TextField();
@@ -37,26 +39,12 @@ public class HelloFX extends Application {
                 observableList.remove(index);
         });
 
-        List<Country> stringList = new ArrayList<>(List.of(
-                new Country("Sverige","Stockholm",10500000, "swe"),
-                new Country("Norge","Oslo",5500000, "nor"),
-                new Country("Norge","Oslo",5500000, "nor"),
-                new Country("Sverige","Stockholm",10500000, "swe"),
-                new Country("Norge","Oslo",5500000, "nor"),
-                new Country("Sverige","Stockholm",10500000, "swe"),
-                new Country("Sverige","Stockholm",10500000, "swe"),
-                new Country("Norge","Oslo",5500000, "nor"),
-                new Country("Sverige","Stockholm",10500000, "swe"),
-                new Country("Norge","Oslo",5500000, "nor"),
-                new Country("Sverige","Stockholm",10500000, "swe"),
-                new Country("Norge","Oslo",5500000, "nor")));
-
         listView = new ListView<>();
-        listView.setCellFactory(new CountryCellFactory());
 
-        observableList = FXCollections.observableList(stringList);
+        var songs = songService.queryForSongs();
+
+        observableList = FXCollections.observableList(songs);
         listView.setItems(observableList);
-
 
 
         HBox hBox = new HBox();

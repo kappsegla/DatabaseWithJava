@@ -1,4 +1,4 @@
-package org.example;
+package org.example.service;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
