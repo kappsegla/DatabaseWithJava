@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+<BorderPane fx:controller="org.example.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <FlowPane hgap="3.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="circleButton" mnemonicParsing="false" text="Circle" onAction="#circleClicked" />
+            <Button fx:id="rectButton" mnemonicParsing="false" text="Rectangle" onAction="#rectClicked" />
+            <Button fx:id="lineButton" mnemonicParsing="false" text="Line" onAction="#lineClicked" />
+            <ColorPicker fx:id="colorPicker" />
+         </children>
+         <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </padding>
+      </FlowPane>
+   </top>
+   <center>
+      <Canvas fx:id="canvas" height="400.0" width="400.0" BorderPane.alignment="CENTER" onMouseClicked="#canvasClicked">
+         <BorderPane.margin>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </BorderPane.margin></Canvas>
+   </center>
+</BorderPane>
