@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="org.example.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <FlowPane hgap="3.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="circleButton" mnemonicParsing="false" text="Circle" />
-            <Button fx:id="rectButton" mnemonicParsing="false" text="Rectangle" />
-            <Button fx:id="lineButton" mnemonicParsing="false" text="Line" />
+            <Button  mnemonicParsing="false" text="Circle"  onAction="#circleClicked"/>
+            <Button  mnemonicParsing="false" text="Rectangle" onAction="#rectClicked"/>
+            <Button  mnemonicParsing="false" text="Line" onAction="#lineClicked"/>
             <ColorPicker fx:id="colorPicker" />
          </children>
          <padding>
@@ -23,9 +23,9 @@
       </FlowPane>
    </top>
    <center>
-      <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="canvas" stylesheets="@style.css" BorderPane.alignment="CENTER">
+      <StackPane styleClass="canvas" stylesheets="@style.css">
          <children>
-            <Canvas fx:id="canvas" height="400.0" width="400.0" />
+            <Canvas fx:id="canvas" height="400.0" width="400.0" onMouseClicked="#canvasClicked" />
          </children>
       </StackPane>
    </center>
