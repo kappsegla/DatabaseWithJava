@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ColorPicker?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane fx:controller="org.example.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller">
    <top>
       <FlowPane hgap="3.0" BorderPane.alignment="CENTER">
          <children>
-            <Button  mnemonicParsing="false" text="Circle"  onAction="#circleClicked"/>
-            <Button  mnemonicParsing="false" text="Rectangle" onAction="#rectClicked"/>
-            <Button  mnemonicParsing="false" text="Line" onAction="#lineClicked"/>
+            <Button fx:id="circleButton" mnemonicParsing="false" onAction="#circleClicked" text="Circle" />
+            <Button fx:id="rectButton" mnemonicParsing="false" onAction="#rectClicked" text="Rectangle" />
+            <Button mnemonicParsing="false" onAction="#lineClicked" text="Line" />
             <ColorPicker fx:id="colorPicker" />
+            <TextField fx:id="textField" />
          </children>
          <padding>
             <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
@@ -25,7 +23,7 @@
    <center>
       <StackPane styleClass="canvas" stylesheets="@style.css">
          <children>
-            <Canvas fx:id="canvas" height="400.0" width="400.0" onMouseClicked="#canvasClicked" />
+            <Canvas fx:id="canvas" height="400.0" onMouseClicked="#canvasClicked" width="400.0" />
          </children>
       </StackPane>
    </center>
