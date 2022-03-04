@@ -4,11 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 public class Controller {
     public ColorPicker colorPicker;
     public Canvas canvas;
     private ShapeType shapeType = ShapeType.CIRCLE;
+
+    public void initialize() {
+        colorPicker.setValue(Color.BLACK);
+    }
 
     public void circleClicked(ActionEvent actionEvent) {
         shapeType = ShapeType.CIRCLE;
